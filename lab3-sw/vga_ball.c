@@ -105,8 +105,6 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
                                  sizeof(vga_ball_arg_t)))
                         return -EACCES;
                 break;
-
-
 	default:
 		return -EINVAL;
 	}
