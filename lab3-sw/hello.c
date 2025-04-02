@@ -4,6 +4,7 @@
  *
  * Stephen A. Edwards
  * Columbia University
+ * 
  */
 
 #include <stdio.h>
@@ -130,7 +131,7 @@ int main()
 	      h_flag = false;    // bounce right again
     }
 
-    // // Send updated position to the device
+    // Send updated position to the device
     set_hv(&hv_val);
 
     // Optional: print color state for debugging; this is blue 
