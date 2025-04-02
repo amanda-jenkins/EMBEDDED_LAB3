@@ -12,6 +12,11 @@ typedef struct {
   vga_ball_color_t background;
 } vga_ball_arg_t;
 
+typedef struct {
+  int x, y;
+} vga_ball_position_t;
+
+#define VGA_BALL_WRITE_COORDINATES _IOW(VGA_BALL_MAGIC, 3, vga_ball_position_t)
 #define VGA_BALL_MAGIC 'q'
 
 /* ioctls and their arguments */
