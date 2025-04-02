@@ -79,7 +79,7 @@ static void write_hv(vga_ball_hv_t *hv){
 static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 {
 	vga_ball_arg_t vla;
-	vga_ball_position_t position
+	//vga_ball_position_t position
 
 	switch (cmd) {
 	case VGA_BALL_WRITE_BACKGROUND:
