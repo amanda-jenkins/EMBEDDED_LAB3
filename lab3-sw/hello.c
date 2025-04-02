@@ -14,6 +14,7 @@
 #include <fcntl.h>
 #include <string.h>
 #include <unistd.h>
+#include <stdbool.h>
 
 int vga_ball_fd;
 
