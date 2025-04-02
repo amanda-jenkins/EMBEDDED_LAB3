@@ -79,6 +79,7 @@ static void write_hv(vga_ball_hv_t *hv){
 static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 {
 	vga_ball_arg_t vla;
+	vga_ball_position_t position
 
 	switch (cmd) {
 	case VGA_BALL_WRITE_BACKGROUND:
@@ -109,12 +110,12 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
                                  sizeof(vga_ball_arg_t)))
                         return -EACCES;
                 break;
-		case VGA_BALL_WRITE_COORDINATES:
-  		if (copy_from_user(&position, (vga_ball_position_t *) arg, sizeof(position)))
-    		return -EACCES;
-  				iowrite8(position.x, COORD_X(dev.virtbase));
-  				iowrite8(position.y, COORD_Y(dev.virtbase));
-  				break;
+		//case VGA_BALL_WRITE_COORDINATES:
+  		//if (copy_from_user(&position, (vga_ball_position_t *) arg, sizeof(position)))
+    //		return -EACCES;
+  	//			iowrite8(position.x, COORD_X(dev.virtbase));
+  	//			iowrite8(position.y, COORD_Y(dev.virtbase));
+  	//			break;
 
 
 
