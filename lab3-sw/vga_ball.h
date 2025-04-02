@@ -2,21 +2,18 @@
 #define _VGA_BALL_H
 
 #include <linux/ioctl.h>
-
 typedef struct {
-  unsigned char red, green, blue;
-} vga_ball_color_t;
-  
+  int h; // Horizontal coordinate
+  int v; // Vertical coordinate
+} vga_ball_hv_t;
+
+#define VGA_BALL_WRITE_HV _IOW(VGA_BALL_MAGIC, 3, vga_ball_arg_t)
 
 typedef struct {
   vga_ball_color_t background;
+  vga_ball_hv_t hv; // Add this line if not already there
 } vga_ball_arg_t;
 
-typedef struct {
-  int x, y;
-} vga_ball_position_t;
-
-#define VGA_BALL_WRITE_COORDINATES _IOW(VGA_BALL_MAGIC, 3, vga_ball_position_t)
 #define VGA_BALL_MAGIC 'q'
 
 /* ioctls and their arguments */
