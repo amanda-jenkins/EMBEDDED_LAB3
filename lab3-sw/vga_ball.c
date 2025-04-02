@@ -96,9 +96,11 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 		break;
 	case VGA_BALL_WRITE_HV:
                 if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
-                                   sizeof(vga_ball_arg_t)))
+                                   sizeof(vla)))
                         return -EACCES;
-                write_hv(&vla.hv);
+                //write_hv(&vla.hv);
+				iowrite8(position.x, COORD_X(dev.virtbase));
+  				iowrite8(position.y, COORD_Y(dev.virtbase));
                 break;
 
         case VGA_BALL_READ_HV:
