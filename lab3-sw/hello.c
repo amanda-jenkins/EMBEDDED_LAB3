@@ -52,14 +52,18 @@
  
  int main()
  {
+
+  // Declare a struct to hold both color and coordinate data
    vga_ball_arg_t vla;
    int i;
+
+   // Device file path for the VGA ball kernel module
    static const char filename[] = "/dev/vga_ball";
  
    static const vga_ball_color_t colors[] = {
      { 0xff, 0x00, 0x00 }, /* Red */
      { 0x00, 0xCf, 0x00 }, /* Green */
- //    { 0x00, 0x00, 0xff }, /* Blue */
+     { 0x00, 0x00, 0xff }, /* Blue */
      { 0xff, 0xff, 0x00 }, /* Yellow */
      { 0x00, 0xff, 0xff }, /* Cyan */
      { 0xff, 0x00, 0xff }, /* Magenta */
@@ -79,22 +83,30 @@
  
    printf("initial state: ");
    print_background_color();
+
+   // Declare coordinate struct and set initial position
    vga_ball_coordinates coordinates;
  
-   //x-coordinate most sigficant 20
-   //y-coordinate max is 15
+   // x is 20; y is 20? 
+   // Define screen boundaries (ball should stay within 20px margins)
    int MAX_Y = 480-20;
    int MAX_X = 640-20;
- //  coordinates.x = 320;
- //  coordinates.y = 240;
-     coordinates.x = 20;
-     coordinates.y = 20;
+
+    coordinates.x = 20;
+    coordinates.y = 20;
+
+   // Ball movement speed and direction
    int inc_xy = 1;
    int incy = inc_xy;
    int incx = inc_xy;
+
    while(1) {
+
      set_background_color(&colors[1]);
+     // Send updated ball coordinates to the driver
      set_ball_coordinates(&coordinates);
+
+     //// Bounce logic: reverse direction when hitting Y boundary
      if(coordinates.y+1 > MAX_Y){
        incy = -inc_xy;
        printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
