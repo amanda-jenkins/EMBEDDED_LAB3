@@ -3,13 +3,6 @@
  *
  * Stephen A. Edwards
  * Columbia University
- *
- * Register map:
- * 
- * Byte Offset  7 ... 0   Meaning
- *        0    |  Red  |  Red component of background color (0-255)
- *        1    | Green |  Green component
- *        2    | Blue  |  Blue component
  */
 
 module vga_ball(input logic        clk,
@@ -26,33 +19,43 @@ module vga_ball(input logic        clk,
 
    logic [10:0]	   hcount;
    logic [9:0]     vcount;
-
+   logic [4:0]     x_low;
+   logic [9:0]     x;
+   logic [4:0]     y_low;
+   logic [9:0]     y;
+   logic [7:0]     radius;
+   logic [25:0]    result;
+   logic [25:0]    result1;
+   logic [25:0]    result2;
+   logic [20:0]    result3;
    logic [7:0] 	   background_r, background_g, background_b;
 	
    vga_counters counters(.clk50(clk), .*);
 
+   assign result1 = (hcount[10:1]-x)*(hcount[10:1]-x);
+   assign result2 = (vcount-y)*(vcount-y);
+   assign result3 = radius*radius;
+   assign result = result1+result2;
+   assign {VGA_R, VGA_G, VGA_B} = VGA_BLANK_n && (result < result3)? {8'he3, 8'h41, 8'hdc}:{background_r, background_g, background_b};
+
    always_ff @(posedge clk)
      if (reset) begin
 	background_r <= 8'h0;
-	background_g <= 8'h0;
-	background_b <= 8'h80;
+	background_g <= 8'h99;
+	background_b <= 8'h60;
+        x <= 8'd30;
+        y <= 8'd30;
+        radius <= 8'd16;
      end else if (chipselect && write)
        case (address)
-	 3'h0 : background_r <= writedata;
+	 3'h0 : radius <= writedata;
 	 3'h1 : background_g <= writedata;
 	 3'h2 : background_b <= writedata;
+         3'h3 : x_low <= writedata[4:0];
+         3'h4 : x <= {writedata[4:0],x_low};
+	 3'h5 : y_low <= writedata[4:0];
+         3'h6 : y <= {writedata[4:0],y_low};
        endcase
-
-   always_comb begin
-      {VGA_R, VGA_G, VGA_B} = {8'h0, 8'h0, 8'h0};
-      if (VGA_BLANK_n )
-	if (hcount[10:6] == 5'd3 &&
-	    vcount[9:5] == 5'd3)
-	  {VGA_R, VGA_G, VGA_B} = {8'hff, 8'hff, 8'hff};
-	else
-	  {VGA_R, VGA_G, VGA_B} =
-             {background_r, background_g, background_b};
-   end
 	       
 endmodule
 
