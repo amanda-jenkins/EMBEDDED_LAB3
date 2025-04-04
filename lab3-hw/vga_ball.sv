@@ -8,7 +8,11 @@
  *        0    |  Red  |  Red component of background color (0-255)
  *        1    | Green |  Green component
  *        2    | Blue  |  Blue component
- * 	  3    | X  |  Blue component
+ * 	  3    | x_down  |  x down component
+ *	  4    | x_up  |  x up component
+ *	  5   | y_down  |  y down component
+ *	  6   | y_up  |  y up component
+
  */
  */
 
