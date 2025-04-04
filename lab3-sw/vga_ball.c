@@ -60,10 +60,10 @@
 	 iowrite8(background->red, BG_RED(dev.virtbase) );
 	 iowrite8(background->green, BG_GREEN(dev.virtbase) );
 	 iowrite8(background->blue, BG_BLUE(dev.virtbase) );
-	 iowrite8(background->x_low, BG_XDOWN(dev.virtbase) );
-	 iowrite8(background->x_high, BG_XUP(dev.virtbase) );
-	 iowrite8(background->y_low, BG_YDOWN(dev.virtbase) );
-	 iowrite8(background->y_high, BG_YUP(dev.virtbase) );
+	 iowrite8(background->x_down, BG_XDOWN(dev.virtbase) );
+	 iowrite8(background->x_up, BG_XUP(dev.virtbase) );
+	 iowrite8(background->y_down, BG_YDOWN(dev.virtbase) );
+	 iowrite8(background->y_up, BG_YUP(dev.virtbase) );
 	 iowrite8(background->r, BG_R(dev.virtbase) );
 	 dev.background = *background;
  }
