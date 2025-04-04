@@ -38,10 +38,10 @@
  #define BG_RED(x) (x)
  #define BG_GREEN(x) ((x)+1)
  #define BG_BLUE(x) ((x)+2)
- #define BG_XLOW(x) ((x)+3)
- #define BG_XHIGH(x) ((x)+4)
- #define BG_YLOW(x) ((x)+5)
- #define BG_YHIGH(x) ((x)+6)
+ #define BG_XDOWN(x) ((x)+3)
+ #define BG_XUP(x) ((x)+4)
+ #define BG_YDOWN(x) ((x)+5)
+ #define BG_YUP(x) ((x)+6)
  #define BG_R(x) ((x)+7)
  /*
   * Information about our device
@@ -61,10 +61,10 @@
 	 iowrite8(background->red, BG_RED(dev.virtbase) );
 	 iowrite8(background->green, BG_GREEN(dev.virtbase) );
 	 iowrite8(background->blue, BG_BLUE(dev.virtbase) );
-	 iowrite8(background->x_low, BG_XLOW(dev.virtbase) );
-	 iowrite8(background->x_high, BG_XHIGH(dev.virtbase) );
-	 iowrite8(background->y_low, BG_YLOW(dev.virtbase) );
-	 iowrite8(background->y_high, BG_YHIGH(dev.virtbase) );
+	 iowrite8(background->x_low, BG_XDOWN(dev.virtbase) );
+	 iowrite8(background->x_high, BG_XUP(dev.virtbase) );
+	 iowrite8(background->y_low, BG_YDOWN(dev.virtbase) );
+	 iowrite8(background->y_high, BG_YUP(dev.virtbase) );
 	 iowrite8(background->r, BG_R(dev.virtbase) );
 	 dev.background = *background;
  }
