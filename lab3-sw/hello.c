@@ -3,7 +3,8 @@
  * through ioctls
  * Stephen A. Edwards
  * Columbia University
- *  Amanda Jenkins (alj2155); Swapnil Banerjee(sb5041)
+ * 
+ * Amanda Jenkins (alj2155); Swapnil Banerjee(sb5041)
  */
 
  #include <stdio.h>

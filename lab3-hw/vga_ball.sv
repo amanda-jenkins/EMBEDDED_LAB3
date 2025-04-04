@@ -8,12 +8,12 @@
  *        0    |  Red  |  Red component of background color (0-255)
  *        1    | Green |  Green component
  *        2    | Blue  |  Blue component
- * 	  3    | x_down  |  x down component
- *	  4    | x_up  |  x up component
- *	  5   | y_down  |  y down component
- *	  6   | y_up  |  y up component
-
- */
+ * 	      3    | x_down  |  x down component
+ *	      4    | x_up  |  x up component
+ *	      5   | y_down  |  y down component
+ *	      6   | y_up  |  y up component
+ *
+ *  Amanda Jenkins (alj2155); Swapnil Banerjee(sb5041)
  */
 
 module vga_ball(input logic        clk,
@@ -28,12 +28,12 @@ module vga_ball(input logic        clk,
 		                   VGA_BLANK_n,
 		output logic 	   VGA_SYNC_n);
 
-   logic [10:0]	   hcount;
-   logic [9:0]     vcount;
-   logic [4:0]     x_down;
+    logic [4:0]    x_down;
    logic [9:0]     x;
    logic [4:0]     y_down;
    logic [9:0]     y;
+   logic [10:0]	   hcount;
+   logic [9:0]     vcount;
    logic [7:0]     radius;
    logic [25:0]    result;
    logic [25:0]    result1;
