@@ -78,10 +78,10 @@
    print_background_color();
  
    while(1){
-     colors[i%COLORS].x_low = x;
-     colors[i%COLORS].x_high = (x >> 5);
-     colors[i%COLORS].y_low = y;
-     colors[i%COLORS].y_high = (y >> 5);
+     colors[i%COLORS].x_down = x;
+     colors[i%COLORS].x_up = (x >> 5);
+     colors[i%COLORS].y_down = y;
+     colors[i%COLORS].y_up = (y >> 5);
      colors[i%COLORS].red = r;
 
      x+=vx;
