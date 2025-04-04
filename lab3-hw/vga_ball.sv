@@ -8,6 +8,7 @@
  *        0    |  Red  |  Red component of background color (0-255)
  *        1    | Green |  Green component
  *        2    | Blue  |  Blue component
+ * 	  3    | X  |  Blue component
  */
  */
 
@@ -25,9 +26,9 @@ module vga_ball(input logic        clk,
 
    logic [10:0]	   hcount;
    logic [9:0]     vcount;
-   logic [4:0]     x_low;
+   logic [4:0]     x_down;
    logic [9:0]     x;
-   logic [4:0]     y_low;
+   logic [4:0]     y_down;
    logic [9:0]     y;
    logic [7:0]     radius;
    logic [25:0]    result;
@@ -57,10 +58,10 @@ module vga_ball(input logic        clk,
 	 3'h0 : radius <= writedata;
 	 3'h1 : background_g <= writedata;
 	 3'h2 : background_b <= writedata;
-         3'h3 : x_low <= writedata[4:0];
-         3'h4 : x <= {writedata[4:0],x_low};
-	 3'h5 : y_low <= writedata[4:0];
-         3'h6 : y <= {writedata[4:0],y_low};
+         3'h3 : x_down <= writedata[4:0];
+         3'h4 : x <= {writedata[4:0],x_down};
+	 3'h5 : y_down <= writedata[4:0];
+         3'h6 : y <= {writedata[4:0],y_down};
        endcase
 	       
 endmodule
