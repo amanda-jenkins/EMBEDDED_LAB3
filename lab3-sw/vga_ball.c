@@ -11,10 +11,7 @@
  * http://www.linuxforu.com/tag/linux-device-drivers/
  * http://free-electrons.com/docs/
  *
- *
- * 
- * Zakiy Manigo ztm2106
- * Robel Wondwossen rw3043
+ * Amanda Jenkins (alj2155); Swapnil Banerjee(sb5041)
  */
 
  #include <linux/module.h>
@@ -119,7 +116,7 @@
   */
  static int __init vga_ball_probe(struct platform_device *pdev)
  {
-		 vga_ball_color_t beige = { 0xf9, 0xe4, 0xb7, 0x00, 0x00 };
+	 vga_ball_color_t beige = { 0xf9, 0xe4, 0xb7, 0x00, 0x00 };
 	 int ret;
  
 	 /* Register ourselves as a misc device: creates /dev/vga_ball */
